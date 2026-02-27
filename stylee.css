@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;500&display=swap');
+
+:root {
+    --primary: #8a2be2;
+    --accent: #00d4ff;
+    --bg: #050508;
+    --card: rgba(15, 15, 25, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /* НИКАКИХ ПОДЧЕРКИВАНИЙ */
+}
+
+body.auth-page {
+    background: var(--bg);
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Центр по горизонтали */
+    align-items: center;     /* Центр по вертикали */
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+/* Красивая сетка на фоне */
+.bg-grid {
+    position: absolute;
+    width: 200%; height: 200%;
+    background-image: linear-gradient(rgba(138, 43, 226, 0.05) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(138, 43, 226, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: -1;
+    animation: move 60s linear infinite;
+}
+
+@keyframes move {
+    from { transform: translate(0,0); }
+    to { transform: translate(-50px, -50px); }
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.auth-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+    color: white;
+}
+
+.auth-logo span {
+    color: var(--accent);
+    text-shadow: 0 0 15px var(--accent);
+}
+
+.auth-card {
+    background: var(--card);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Поля ввода */
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #222;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    outline: none;
+}
+
+/* Кнопка */
+.btn-main {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+/* Ссылки */
+.switch-text {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.switch-text a {
+    color: var(--accent);
+    font-weight: bold;
+    margin-left: 8px;
+    transition: 0.3s;
+}
+
+.switch-text a:hover {
+    text-shadow: 0 0 8px var(--accent);
+    color: white;
+}
+/* --- АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ (до 1024px) --- */
+@media (max-width: 1024px) {
+    .container, .main-content {
+        padding: 0 20px; /* Добавляем отступы по бокам */
+    }
+    
+    .grid-layout, .news-grid {
+        grid-template-columns: repeat(2, 1fr); /* По 2 карточки в ряд */
+        gap: 15px;
+    }
+
+    .side-panel {
+        width: 200px; /* Чуть сужаем боковую панель */
+    }
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ (до 768px) --- */
+@media (max-width: 768px) {
+    /* Навигация: превращаем в вертикальную или упрощаем */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Сетки: всё в одну колонку */
+    .grid-layout, .news-grid {
+        grid-template-columns: 1fr; /* Карточки на весь экран */
+    }
+
+    /* Личный кабинет (Dashboard) */
+    .dash-body {
+        flex-direction: column; /* Боковая панель уходит наверх */
+    }
+
+    .side-panel {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+
+    .menu {
+        flex-direction: row; /* Меню в ряд на мобилках */
+        justify-content: space-around;
+    }
+
+    /* Герой-секция (главная) */
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    /* Формы авторизации */
+    .auth-container {
+        width: 90%; /* Чтобы форма не прилипала к краям */
+        margin: 20px auto;
+    }
+    
+    .auth-card {
+        padding: 20px;
+    }
+}
+
+/* --- ОПТИМИЗАЦИЯ ФОНА (bg-grid) --- */
+.bg-grid {
+    background-size: cover;
+    background-attachment: scroll; /* На мобильных 'fixed' может тормозить */
+}
+
+/* Универсальное правило для всех картинок (лопаток и прочего) */
+img {
+    max-width: 100%;
+    height: auto;
+}

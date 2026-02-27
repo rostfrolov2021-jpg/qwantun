@@ -1,0 +1,237 @@
+/* Основные переменные цвета */
+:root {
+    --bg-main: #08080a;
+    --card-bg: rgba(18, 18, 22, 0.95);
+    --accent-orange: #ff6b00;
+    --accent-blue: #00d4ff;
+    --text-primary: #ffffff;
+    --text-secondary: #8b8b91;
+    --border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Общие настройки */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Боковая панель (Sidebar) */
+.side-panel {
+    width: 280px;
+    background: #0d0d0f;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.logo span { color: var(--accent-orange); }
+
+.menu-item {
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+}
+
+.menu-item:hover, .menu-item.active {
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--accent-orange);
+    transform: translateX(5px);
+}
+
+/* Главный контейнер */
+.main-content {
+    flex: 1;
+    padding: 50px;
+    background: radial-gradient(circle at top right, rgba(255, 107, 0, 0.05), transparent);
+}
+
+/* Сетка карточек */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+/* Стиль карточек (Obsidian) */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: 0.4s;
+}
+
+.card:hover {
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+/* Акцентная полоска сверху каждой карточки */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--accent-orange), transparent);
+}
+
+.card.alt-border::before {
+    background: linear-gradient(90deg, var(--accent-blue), transparent);
+}
+
+/* Заголовки */
+.card h3 {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+/* Баланс */
+.balance-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.currency { color: var(--accent-orange); }
+
+/* Инпуты (Поля ввода) */
+input {
+    background: #08080a;
+    border: 1px solid #1f1f23;
+    border-radius: 8px;
+    padding: 14px;
+    color: white;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: var(--accent-orange);
+    background: #0d0d0f;
+}
+
+/* Кнопка Оплаты */
+.btn-pay {
+    background: var(--accent-orange);
+    color: #000;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-pay:hover {
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+    filter: brightness(1.1);
+}
+/* --- АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ (до 1024px) --- */
+@media (max-width: 1024px) {
+    .container, .main-content {
+        padding: 0 20px; /* Добавляем отступы по бокам */
+    }
+    
+    .grid-layout, .news-grid {
+        grid-template-columns: repeat(2, 1fr); /* По 2 карточки в ряд */
+        gap: 15px;
+    }
+
+    .side-panel {
+        width: 200px; /* Чуть сужаем боковую панель */
+    }
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ (до 768px) --- */
+@media (max-width: 768px) {
+    /* Навигация: превращаем в вертикальную или упрощаем */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Сетки: всё в одну колонку */
+    .grid-layout, .news-grid {
+        grid-template-columns: 1fr; /* Карточки на весь экран */
+    }
+
+    /* Личный кабинет (Dashboard) */
+    .dash-body {
+        flex-direction: column; /* Боковая панель уходит наверх */
+    }
+
+    .side-panel {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+
+    .menu {
+        flex-direction: row; /* Меню в ряд на мобилках */
+        justify-content: space-around;
+    }
+
+    /* Герой-секция (главная) */
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    /* Формы авторизации */
+    .auth-container {
+        width: 90%; /* Чтобы форма не прилипала к краям */
+        margin: 20px auto;
+    }
+    
+    .auth-card {
+        padding: 20px;
+    }
+}
+
+/* --- ОПТИМИЗАЦИЯ ФОНА (bg-grid) --- */
+.bg-grid {
+    background-size: cover;
+    background-attachment: scroll; /* На мобильных 'fixed' может тормозить */
+}
+
+/* Универсальное правило для всех картинок (лопаток и прочего) */
+img {
+    max-width: 100%;
+    height: auto;
+}

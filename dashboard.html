@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>QuantumBox | Dark Obsidian</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dash-body">
+
+    <div class="side-panel">
+        <div class="logo">Q<span>BOX</span></div>
+        <nav class="menu">
+            <a href="index.html" class="menu-item">ГЛАВНАЯ</a>
+            <div class="menu-item active">КАБИНЕТ</div>
+            <a href="#" onclick="logout()" class="menu-item logout">ВЫХОД</a>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <h1 id="nav-username">ЗАГРУЗКА...</h1>
+            <div class="id-badge">ID: <span id="user-id">777</span></div>
+        </header>
+
+        <div class="grid-layout">
+            <div class="card obsidian-card">
+                <h3>КОШЕЛЕК & ОПЛАТА</h3>
+                <div class="balance-display">
+                    <span id="user-balance">0</span> <span class="currency">₽</span>
+                </div>
+                <div class="input-container">
+                    <input type="number" id="pay-amount" placeholder="Введите сумму">
+                    <button class="btn-pay" onclick="goToPayment()">ОПЛАТИТЬ КАРТОЙ</button>
+                </div>
+            </div>
+
+            <div class="card obsidian-card alt-border">
+                <h3>БЕЗОПАСНОСТЬ</h3>
+                <input type="email" id="new-email" placeholder="Новая почта">
+                <input type="password" id="new-pass" placeholder="Новый пароль">
+                <button class="btn-save" onclick="updateProfile()">СОХРАНИТЬ</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="scriptt.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>QuantumBox | Регистрация</title>
+    <link rel="stylesheet" href="stylee.css">
+    <style>
+        /* Индивидуальный акцент для страницы регистрации */
+        :root { --accent: #ff00ff; } /* Розовый неон для регистрации */
+        .auth-card { border-color: rgba(255, 0, 255, 0.3); }
+    </style>
+</head>
+<body class="auth-page">
+    <div class="bg-grid"></div>
+
+    <div class="auth-container">
+        <div class="auth-logo">QUANTUM<span>BOX</span></div>
+        
+        <div class="auth-card">
+            <h2>РЕГИСТРАЦИЯ</h2>
+            <p class="subtitle">Заполните данные для создания профиля</p>
+            
+            <div class="input-group">
+                <input type="text" placeholder="Придумайте ник">
+                <input type="email" placeholder="Ваша почта">
+                <input type="password" placeholder="Пароль">
+                <input type="password" placeholder="Повторите пароль">
+            </div>
+            
+           <button class="btn-main" onclick="register()">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+            
+            <p class="switch-text">Уже есть аккаунт? 
+                <a href="login.html">Вернуться ко входу</a>
+        </div>
+    </div>
+    <script src="sciript.js"></script>
+</body>
+</html>
